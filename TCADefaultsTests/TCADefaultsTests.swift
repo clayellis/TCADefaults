@@ -26,11 +26,13 @@ class TCADefaultsTests: XCTestCase {
         )
 
         store.assert(
-            .send(.setToggle(isOn: true)) {
+            .send(.setToggle(isOn: true)),
+            .receive(.isToggleOnChanged) {
                 $0.isToggleOn = true
             },
             .do { XCTAssertTrue(isToggleOn) },
-            .send(.setToggle(isOn: false)) {
+            .send(.setToggle(isOn: false)),
+            .receive(.isToggleOnChanged) {
                 $0.isToggleOn = false
             },
             .do { XCTAssertFalse(isToggleOn) }

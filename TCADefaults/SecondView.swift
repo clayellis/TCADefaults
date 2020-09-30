@@ -10,6 +10,7 @@ import SwiftUI
 
 enum SecondViewAction: Equatable {
     case setToggle(isOn: Bool)
+    case isToggleOnChanged
 }
 
 struct SecondViewState: Equatable {
@@ -33,10 +34,12 @@ let secondViewReducer = Reducer<SecondViewState, SecondViewAction, SecondViewEnv
     state, action, environment in
     switch action {
     case .setToggle(let isOn):
-        state.isToggleOn = isOn
-        return .fireAndForget {
-            environment.isToggleOn = isOn
-        }
+        environment.isToggleOn = isOn
+        return Effect(value: .isToggleOnChanged)
+
+    case .isToggleOnChanged:
+        state.isToggleOn = environment.isToggleOn
+        return .none
     }
 }
 
