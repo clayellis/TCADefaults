@@ -5,9 +5,10 @@
 //  Created by Clay Ellis on 9/30/20.
 //
 
-import XCTest
 import ComposableArchitecture
+import SwiftUI
 @testable import TCADefaults
+import XCTest
 
 class TCADefaultsTests: XCTestCase {
 
@@ -17,8 +18,10 @@ class TCADefaultsTests: XCTestCase {
             initialState: SecondViewState(isToggleOn: isToggleOn),
             reducer: secondViewReducer,
             environment: SecondViewEnvironment(
-                isToggleOn: { isToggleOn },
-                setIsToggleOn: { isToggleOn = $0 }
+                isToggleOn: Binding(
+                    get: { isToggleOn },
+                    set: { isToggleOn = $0 }
+                )
             )
         )
 

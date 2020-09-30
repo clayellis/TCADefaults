@@ -17,7 +17,7 @@ struct FirstView: View {
             "Present Second View",
             destination: SecondView(store: Store(
                 initialState: SecondViewState(
-                    isToggleOn: SecondViewEnvironment.live.isToggleOn()
+                    isToggleOn: SecondViewEnvironment.live.isToggleOn.wrappedValue
                 ),
                 reducer: secondViewReducer,
                 environment: .live

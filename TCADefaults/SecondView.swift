@@ -17,14 +17,15 @@ struct SecondViewState: Equatable {
 }
 
 struct SecondViewEnvironment {
-    let isToggleOn: () -> Bool
-    let setIsToggleOn: (Bool) -> ()
+    let isToggleOn: Binding<Bool>
 }
 
 extension SecondViewEnvironment {
     static let live = SecondViewEnvironment(
-        isToggleOn: { UserDefaults.standard.bool(forKey: "isToggleOn") },
-        setIsToggleOn: { UserDefaults.standard.setValue($0, forKey: "isToggleOn") }
+        isToggleOn: Binding(
+            get: { UserDefaults.standard.bool(forKey: "isToggleOn") },
+            set: { UserDefaults.standard.setValue($0, forKey: "isToggleOn") }
+        )
     )
 }
 
@@ -34,7 +35,7 @@ let secondViewReducer = Reducer<SecondViewState, SecondViewAction, SecondViewEnv
     case .setToggle(let isOn):
         state.isToggleOn = isOn
         return .fireAndForget {
-            environment.setIsToggleOn(isOn)
+            environment.isToggleOn.wrappedValue = isOn
         }
     }
 }
@@ -61,8 +62,10 @@ struct SecondView_Previews: PreviewProvider {
                 initialState: SecondViewState(isToggleOn: isToggleOn),
                 reducer: secondViewReducer,
                 environment: SecondViewEnvironment(
-                    isToggleOn: { isToggleOn },
-                    setIsToggleOn: { isToggleOn = $0 }
+                    isToggleOn: Binding(
+                        get: { isToggleOn },
+                        set: { isToggleOn = $0 }
+                    )
                 )
             ))
         }
