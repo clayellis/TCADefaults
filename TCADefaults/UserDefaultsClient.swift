@@ -7,14 +7,29 @@
 
 import Foundation
 
-struct UserDefaultsClient {
-    var isToggleOn: Bool {
+@propertyWrapper
+struct UserDefault<Value> {
+    let key: String
+    let defaultValue: Value
+    let defaults: UserDefaults
+
+    init(_ key: String, defaultValue: Value, defaults: UserDefaults = .standard) {
+        self.key = key
+        self.defaultValue = defaultValue
+        self.defaults = defaults
+    }
+
+    var wrappedValue: Value {
         get {
-            UserDefaults.standard.bool(forKey: "isToggleOn")
+            defaults.object(forKey: key) as? Value ?? defaultValue
         }
 
         nonmutating set {
-            UserDefaults.standard.setValue(newValue, forKey: "isToggleOn")
+            defaults.set(newValue, forKey: key)
         }
     }
+}
+
+struct UserDefaultsClient {
+    @UserDefault("isToggleOn", defaultValue: false) var isToggleOn: Bool
 }
