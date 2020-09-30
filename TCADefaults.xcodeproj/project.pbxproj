@@ -15,6 +15,7 @@
 		6F0561342524D71000DFF38B /* TCADefaultsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0561332524D71000DFF38B /* TCADefaultsUITests.swift */; };
 		6F0561462524D76600DFF38B /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 6F0561452524D76600DFF38B /* ComposableArchitecture */; };
 		6F05614B2524D7A200DFF38B /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05614A2524D7A200DFF38B /* SecondView.swift */; };
+		6F0561532524F52400DFF38B /* UserDefaultsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0561522524F52400DFF38B /* UserDefaultsClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		6F0561332524D71000DFF38B /* TCADefaultsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCADefaultsUITests.swift; sourceTree = "<group>"; };
 		6F0561352524D71000DFF38B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F05614A2524D7A200DFF38B /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
+		6F0561522524F52400DFF38B /* UserDefaultsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				6F0561162524D70F00DFF38B /* TCADefaultsApp.swift */,
 				6F0561182524D70F00DFF38B /* FirstView.swift */,
 				6F05614A2524D7A200DFF38B /* SecondView.swift */,
+				6F0561522524F52400DFF38B /* UserDefaultsClient.swift */,
 				6F05611A2524D71000DFF38B /* Assets.xcassets */,
 				6F05611F2524D71000DFF38B /* Info.plist */,
 				6F05611C2524D71000DFF38B /* Preview Content */,
@@ -271,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F05614B2524D7A200DFF38B /* SecondView.swift in Sources */,
+				6F0561532524F52400DFF38B /* UserDefaultsClient.swift in Sources */,
 				6F0561192524D70F00DFF38B /* FirstView.swift in Sources */,
 				6F0561172524D70F00DFF38B /* TCADefaultsApp.swift in Sources */,
 			);

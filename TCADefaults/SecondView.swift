@@ -23,8 +23,8 @@ struct SecondViewEnvironment {
 extension SecondViewEnvironment {
     static let live = SecondViewEnvironment(
         isToggleOn: Binding(
-            get: { UserDefaults.standard.bool(forKey: "isToggleOn") },
-            set: { UserDefaults.standard.setValue($0, forKey: "isToggleOn") }
+            get: { UserDefaultsClient().isToggleOn },
+            set: { UserDefaultsClient().isToggleOn = $0 }
         )
     )
 }
