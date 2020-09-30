@@ -17,7 +17,7 @@ struct SecondViewState: Equatable {
 }
 
 struct SecondViewEnvironment {
-    let isToggleOn: Binding<Bool>
+    @Binding var isToggleOn: Bool
 }
 
 extension SecondViewEnvironment {
@@ -35,7 +35,7 @@ let secondViewReducer = Reducer<SecondViewState, SecondViewAction, SecondViewEnv
     case .setToggle(let isOn):
         state.isToggleOn = isOn
         return .fireAndForget {
-            environment.isToggleOn.wrappedValue = isOn
+            environment.isToggleOn = isOn
         }
     }
 }
