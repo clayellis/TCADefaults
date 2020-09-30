@@ -5,10 +5,10 @@
 //  Created by Clay Ellis on 9/30/20.
 //
 
-import SwiftUI
 import ComposableArchitecture
+import SwiftUI
 
-enum SecondViewAction {
+enum SecondViewAction: Equatable {
     case setToggle(isOn: Bool)
 }
 
